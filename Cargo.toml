@@ -3,6 +3,9 @@ name = "bilateral-filter"
 version = "0.1.0"
 authors = ["Anton <antononyshch@gmail.com>"]
 edition = "2018"
+description = "Bilateral Filter algorithm written in Rust"
+repository = "https://github.com/AntonOnyshch/bilateral-filter-rust"
+license = "MIT"
 
 [lib]
 crate-type = ["cdylib", "rlib"]
