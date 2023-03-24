@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <title data-lang-title="title">Bilateral filter</title>
+      <meta name="viewport" content="width=device-width"/>
+      <meta name="description" data-lang-textContent="content" content="Bilateral filter">
+      <script type="module" src="./index.js"></script>
+    </head>
+    <style>
+        body {
+            margin: 0;
+        }
+        button {
+            padding: 1em;
+        }
+        canvas {
+            border: 2px solid dodgerblue;
+        }
+        label {
+            color: rgb(155, 44, 0);
+        }
+        #ctn {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .canvas-ctn {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 1em;
+        }
+    </style>
+    <header>
+        <form>
+            <div>
+                <label for="testImages">Test images</label>
+
+                <select name="images" id="testImages">
+                    <option value="">Choose an image</option>
+                    <option value="ct.jpg">Computed Tomography</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="sigmaSpatial">Sigma spatial</label>
+                <input type="range" id="sigmaSpatial" value="2" min="2" step="1" max="8"/>
+                <span id="sigmaSpatialText">2</span>
+            </div>
+
+            <div>
+                <label for="sigmaIntensity">Sigma intensity</label> 
+                <input type="range" id="sigmaIntensity" value="10" min="2" step="1" max="50"/>
+                <span id="sigmaIntensityText">10</span>
+            </div> <br>
+
+            <button id="runFilterBtn" type="button">Run</button>
+        </form>
+    </header>
+    <body id="app">
+        <div id="ctn">
+
+            <div class="canvas-ctn">
+                <label for="originalCvs">ORIGINAL</label>
+                <canvas id="originalCvs"></canvas>
+            </div>
+
+            <div class="canvas-ctn">
+                <label for="filteredCvs">Bilateral Filter</label>
+                <canvas id="filteredCvs"></canvas>
+            </div>
+
+        </div>
+    </body>
+</html>
