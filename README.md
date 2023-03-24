@@ -1,4 +1,11 @@
+# Bilateral filter
+
 [All additional information about Rust and WebAssembly you can find here](https://rustwasm.github.io/docs/wasm-pack/introduction.html)
+
+
+## Result
+
+<img width="1038" alt="bilateral-filter-example" src="https://user-images.githubusercontent.com/58116769/223050159-4e3decf6-c1f4-4dd7-be90-b9db2428082f.png">
 
 # Description
 
@@ -15,7 +22,7 @@ As far as I understood looking to my code there's no way to vectorize this one
 ```
 wasm-pack build --release --target web
 ```
-## --target web - is needed here if you want to call your functions from browser.
+--target web - is needed here if you want to call your functions from browser.
 
 ### 🔬 Test
 
