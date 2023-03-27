@@ -177,6 +177,15 @@ mod test {
     const SIGMA_SPATIAL: u8 = 3;
     const SIGMA_INTENSITY: u8 = 3;
 
+    const DATASET: [u8; 36] = [
+        205, 185, 193, 105, 135, 93,
+        205, 189, 193, 115, 116, 13,
+        215, 142, 124, 125, 181, 73,
+        108, 185, 161, 135, 135, 83,
+        65, 185, 53, 119, 135, 93,
+        89, 185, 193, 105, 135, 93,
+    ];
+
     fn get_new_filter() -> BilateralFilter {
         BilateralFilter::new(IMAGE_WIDTH, IMAGE_HEIGHT)
     }
@@ -218,5 +227,19 @@ mod test {
         bf.calculate_gauss_spatial_lut(SIGMA_SPATIAL);
 
         assert_eq!(bf.spatial_lut[0], 0.011338559, "Spatial LUT's first value = {}", bf.spatial_lut[0]);
+    }
+
+    #[test]
+    fn kernel_test() {
+        let mut bf = get_new_filter();
+        bf.set_sigma(SIGMA_SPATIAL, SIGMA_INTENSITY);
+        bf.input_data = DATASET.to_vec();
+
+        bf.calculate_intensity_lut(SIGMA_INTENSITY);
+        bf.calculate_gauss_spatial_lut(SIGMA_SPATIAL);
+ 
+        let pixel = bf.kernel(0, DATASET[(1*6) + 1]);
+
+        assert_eq!(pixel, 190, "Pixel value: {}", pixel);
     }
 }
